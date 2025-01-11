@@ -6,6 +6,7 @@ project(construct-ar-project)
 
 #libraries
 include_directories(thirdparty)
+include_directories(include)
 
 
 
@@ -16,9 +17,8 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 
 # Executable
-add_executable(test_exec "src/test.cpp" "include/init.hpp" "include/initCamera.hpp" "include/plane.hpp")
-
+#	
 # Link OpenCV libraries to the executable
-target_link_libraries(test_exec ${OpenCV_LIBS})
+#target_link_libraries(test_exec ${OpenCV_LIBS})
 
 

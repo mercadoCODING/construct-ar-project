@@ -6,6 +6,8 @@
 #include "plane.hpp"
 #include <chrono>
 	
+//hpp file for initializing camera and slam
+
 using namespace cv;
 using namespace std;
 
@@ -36,16 +38,14 @@ class Camera {
 	// 2 Point corner of the indicator X , Y
 	vector<Point2f> matIndicatorCorner;
 
-	//Camera Matrix
+	//Intrinsic Camera Matrix
 	Mat matKMat;
 
-	/* todo plane.hpp
+	//Plane Detection
 	float planeThreshold = 80;
 	Plane mPlane;
-	*/
-
+	
 	//Helper func
-
 	Point2f worldToImage(Point3f);
 	Point3f cameraToWorld(Point3f);
 	Point3f worldToCamera(Point3f);
@@ -54,14 +54,15 @@ public:
 	Camera();
 	void setDebug(bool);
 	void releaseSlam(); //release slam resources
-	void init(std::string path);
+	void init(string path);
 	int process(Mat& image, Mat& output);	
 	bool detectPlane(int iterations = 500, float threshold = 0.01); // plane detection
 	void showIndicator(Mat $dest);
+	Plane getPlane();
 
 	Mat getCtoW(); //Getter Camera to World
 	Mat getWtoC(); // Getter World to Camera
-	//Point3f getCameraCenter(Plane);
+	Point3f getCameraCenter(Plane);
 };
 
 
